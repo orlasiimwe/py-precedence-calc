@@ -126,5 +126,17 @@ def evaluate(tokens):
 
 # Driver Code
 if __name__ == "__main__":
-    val = input("Enter your value: ")
-    print(evaluate(val))
+
+	while True:
+		val = input("Enter your expression: ")
+		
+		if(val == 'exit'):
+			print('Thank you! Come again')
+			break
+		else:
+			precision = input("Enter the level of precision: ")
+			result = evaluate(val)
+			pre = "%." + precision + "f"
+			print(pre % result)
+			print("\n")
+			
