@@ -42,12 +42,26 @@ def evaluate(tokens):
 
 			# There may be more than one
 			# digits in the number.
-			while (i < len(tokens) and
+			"""while (i < len(tokens) and
 				tokens[i].isdigit()):
 			
 				val = (val * 10) + int(tokens[i])
-				i += 1
+				i += 1"""
 			
+			while (i < len(tokens) and (tokens[i].isdigit() or tokens[i] == ".")):
+				#print(tokens[i])
+				if tokens[i] == ".":
+					i += 1
+					k = i
+					y = 1
+					while (k < len(tokens) and tokens[k].isdigit()):
+						y = y * 10
+						val = val + (float(tokens[k]) * (1/y))
+						k += 1
+					i = k
+				else:  
+					val = (val * 10) + int(tokens[i])
+					i += 1
 			values.append(val)
 			
 			# right now the i points to the character next to the digit, 
